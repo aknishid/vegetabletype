@@ -1,0 +1,5 @@
+contents="vegetabletype_contents"
+contents_owner="aknishid"
+wwwdir="/var/www"
+contentsdir="$wwwdir/$contents"
+appdir="$wwwdir/egetabletype"
