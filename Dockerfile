@@ -8,7 +8,7 @@ RUN yum update -y && \
 RUN yum install -y epel-release && \
     yum clean all
 
-RUN yum install -y httpd php curl git vim pandoc ruby&& \
+RUN yum install -y httpd php curl git vim pandoc ruby sudo&& \
     yum clean all
 
 COPY ./index.html /var/www/html/index.html
