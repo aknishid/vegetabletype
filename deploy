@@ -2,10 +2,12 @@
 source "$(dirname $0)/bin/conf"
 
 [ "$USER" = "root" ]
-
+mkdir -p "$logdir"
+chown www-data:www-data "$logdir" -R
+chmod 777 "$logdir"
 ### INSTALLTHISSYSTEM ###
 rsync -av --delete "$(dirname $0)/bin/" "$appdir/"
-chown www-data:www-data "$appdir" -R
+chown www-data:www-data "$appdir"
 
 ### RENAME FETCH CGI ###
 cd "$appdir"
