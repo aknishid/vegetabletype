@@ -65,6 +65,7 @@ chmod +x fetch_xxxxx.cgi
 chmod +x bin/index.cgi 
 
 ```
+
 # LIST POSTS DATA
 ```
 cd "$datadir"
@@ -102,3 +103,40 @@ rm -f ${tmp}-*
 
 ```        
                            
+=======
+
+- 各種設定
+
+```
+useradd -m -u 2000 www-data
+chown -R www-data:www-data /var/www/vegetabletype_contents/
+chmod 777 /var/www/vegetabletype_contents/.git/FETCH_HEAD
+
+vim /etc/httpd/conf/httpd.conf 
+
+<Directory /var/www/vegetabletype>
+  Options -Indexes -FollowSymLinks +MultiViews +ExecCGI
+  AllowOverride None
+  Order allow,deny
+  Allow from all
+  AddHandler cgi-script .cgi
+</Directory>
+
+<IfModule dir_module>
+    DirectoryIndex index.cgi
+
+Alias /pages /var/www/vegetabletype_contents/pages
+Alias /posts /var/www/vegetabletype_contents/posts
+
+<Directory /var/www/vegetabletype_contents>
+  Options -Indexes -FollowSymLinks
+  AllowOverride None
+  Order allow,deny
+  Allow from all
+</Directory>
+```
+
+- 実行権限
+```
+chmod +x fetch_xxxxx.cgi 
+```

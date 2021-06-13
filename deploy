@@ -3,9 +3,14 @@ source "$(dirname $0)/bin/conf"
 
 [ "$USER" = "root" ]
 
+### CREATE DIRECTORIES ###
+mkdir -p "$logdir" "$datadir" "$datadir/counters"
+chown www-data:www-data "$logdir" "$datadir" "$datadir/counters" -R
+chmod 777 "$logdir" "$datadir" "$datadir/counters"
+
 ### INSTALLTHISSYSTEM ###
 rsync -av --delete "$(dirname $0)/bin/" "$appdir/"
-chown www-data:www-data "$appdir" -R
+chown www-data:www-data "$appdir"
 
 ### RENAME FETCH CGI ###
 cd "$appdir"
