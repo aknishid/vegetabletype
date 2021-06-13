@@ -2,7 +2,7 @@
 
 - 仮想apacheサーバー起動手順
 ```
-docker build -t myhttpd:1.0 /Users/akie/Desktop/Workspace/vegetabletype/ --no-cache
+docker build -t myhttpd:1.0 ~/Desktop/Workspace/vegetabletype/ --no-cache
 docker image ls
 docker run -p 8081:80 --name akn_centos2 -d -t -i --privileged myhttpd:1.0 /sbin/init
 docker ps
